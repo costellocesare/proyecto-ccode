@@ -20,6 +20,15 @@
             background-clip: text;
         }
         
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -93,8 +102,10 @@
     <nav class="fixed top-0 w-full glass z-50 py-3 md:py-4 px-4 md:px-6">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 md:w-10 md:h-10 animated-gradient rounded-lg"></div>
-                <span class="text-xl md:text-2xl font-bold">Ccode<span class="text-purple-500">_</span></span>
+                <div class="w-8 h-8 md:w-10 md:h-10 animated-gradient rounded-lg flex items-center justify-center font-bold text-white text-sm md:text-base">
+                    &lt;/&gt;
+                </div>
+                <span class="text-xl md:text-2xl font-bold">Ccode<span class="text-purple-500 blink">_</span></span>
             </div>
             
             <!-- Desktop Menu -->
@@ -181,7 +192,7 @@
         <div class="container mx-auto">
             <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4">
-                    Servicios <span class="gradient-text">Ccode_</span>
+                    Servicios <span class="gradient-text">Ccode<span class="blink">_</span></span>
                 </h2>
                 <p class="text-gray-400 text-base md:text-xl">Desarrollo de software que impulsa tu negocio</p>
             </div>
@@ -569,8 +580,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
                 <div>
                     <div class="flex items-center space-x-2 mb-3 md:mb-4">
-                        <div class="w-8 h-8 md:w-10 md:h-10 animated-gradient rounded-lg"></div>
-                        <span class="text-xl md:text-2xl font-bold">Ccode<span class="text-purple-500">_</span></span>
+                        <div class="w-8 h-8 md:w-10 md:h-10 animated-gradient rounded-lg flex items-center justify-center font-bold text-white text-sm md:text-base">
+                            &lt;/&gt;
+                        </div>
+                        <span class="text-xl md:text-2xl font-bold">Ccode<span class="text-purple-500 blink">_</span></span>
                     </div>
                     <p class="text-gray-400 text-sm md:text-base">
                         Desarrollo & Marketing Digital con IA
