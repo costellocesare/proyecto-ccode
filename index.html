@@ -67,20 +67,37 @@
             opacity: 0.3;
             border-radius: 50%;
         }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
-<body class="bg-gray-950 text-white overflow-x-hidden">
-    <!-- Blobs decorativos -->
-    <div class="blob w-96 h-96 -top-48 -left-48"></div>
-    <div class="blob w-96 h-96 top-96 right-0"></div>
+<body class="bg-gray-950 text-white">
+    <!-- Blobs decorativos (ajustados para móvil) -->
+    <div class="blob w-48 h-48 md:w-96 md:h-96 -top-24 -left-24 md:-top-48 md:-left-48"></div>
+    <div class="blob w-48 h-48 md:w-96 md:h-96 top-96 -right-24 md:right-0"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full glass z-50 py-4 px-6">
+    <nav class="fixed top-0 w-full glass z-50 py-3 md:py-4 px-4 md:px-6">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 animated-gradient rounded-lg"></div>
-                <span class="text-2xl font-bold">Ccode<span class="text-purple-500">_</span></span>
+                <div class="w-8 h-8 md:w-10 md:h-10 animated-gradient rounded-lg"></div>
+                <span class="text-xl md:text-2xl font-bold">Ccode<span class="text-purple-500">_</span></span>
             </div>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8">
                 <a href="#inicio" class="hover:text-purple-400 transition">Inicio</a>
                 <a href="#servicios" class="hover:text-purple-400 transition">Servicios</a>
@@ -88,183 +105,206 @@
                 <a href="#clientes" class="hover:text-purple-400 transition">Clientes</a>
                 <a href="#precios" class="hover:text-purple-400 transition">Precios</a>
             </div>
-            <button class="glass px-6 py-2 rounded-full hover-glow transition">
+            
+            <button class="hidden md:block glass px-6 py-2 rounded-full hover-glow transition">
                 Contactar <i class="fas fa-arrow-right ml-2"></i>
             </button>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="md:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 glass p-6 md:hidden">
+            <button id="closeBtn" class="absolute top-4 right-4 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mt-12 space-y-4">
+                <a href="#inicio" class="block py-2 hover:text-purple-400 transition">Inicio</a>
+                <a href="#servicios" class="block py-2 hover:text-purple-400 transition">Servicios</a>
+                <a href="#growthflow" class="block py-2 hover:text-purple-400 transition">GrowthFlow</a>
+                <a href="#clientes" class="block py-2 hover:text-purple-400 transition">Clientes</a>
+                <a href="#precios" class="block py-2 hover:text-purple-400 transition">Precios</a>
+                <button class="glass px-6 py-2 rounded-full w-full mt-4">
+                    Contactar <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="min-h-screen flex items-center justify-center relative pt-20">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-8 float-animation">
-                <span class="glass px-4 py-2 rounded-full text-sm">
+    <section id="inicio" class="min-h-screen flex items-center justify-center relative pt-20 px-4 md:px-6">
+        <div class="container mx-auto text-center">
+            <div class="mb-6 md:mb-8">
+                <span class="glass px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm inline-block">
                     🚀 Transformación Digital con IA
                 </span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-bold mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6">
                 <span class="gradient-text">Desarrollo</span> & <br>
-                <span class="gradient-text">Marketing</span> Inteligente
+                <span class="gradient-text">Marketing</span> <span class="block sm:inline">Inteligente</span>
             </h1>
-            <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
+            <p class="text-base md:text-xl text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
                 Potenciamos tu negocio con desarrollo de software de vanguardia y marketing digital automatizado con IA
             </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button class="animated-gradient text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition">
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
+                <button class="animated-gradient text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover:scale-105 transition text-sm md:text-base">
                     Comenzar Proyecto <i class="fas fa-rocket ml-2"></i>
                 </button>
-                <button class="glass px-8 py-4 rounded-full font-semibold hover-glow transition">
+                <button class="glass px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover-glow transition text-sm md:text-base">
                     Ver Demo IA <i class="fas fa-play-circle ml-2"></i>
                 </button>
             </div>
             
             <!-- Stats -->
-            <div class="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
-                <div class="glass p-6 rounded-2xl">
-                    <h3 class="text-3xl font-bold gradient-text">150+</h3>
-                    <p class="text-gray-400">Proyectos</p>
+            <div class="grid grid-cols-3 gap-4 md:gap-8 mt-12 md:mt-20 max-w-3xl mx-auto px-4">
+                <div class="glass p-3 md:p-6 rounded-xl md:rounded-2xl">
+                    <h3 class="text-xl md:text-3xl font-bold gradient-text">150+</h3>
+                    <p class="text-gray-400 text-xs md:text-base">Proyectos</p>
                 </div>
-                <div class="glass p-6 rounded-2xl">
-                    <h3 class="text-3xl font-bold gradient-text">98%</h3>
-                    <p class="text-gray-400">Satisfacción</p>
+                <div class="glass p-3 md:p-6 rounded-xl md:rounded-2xl">
+                    <h3 class="text-xl md:text-3xl font-bold gradient-text">98%</h3>
+                    <p class="text-gray-400 text-xs md:text-base">Satisfacción</p>
                 </div>
-                <div class="glass p-6 rounded-2xl">
-                    <h3 class="text-3xl font-bold gradient-text">24/7</h3>
-                    <p class="text-gray-400">IA Activa</p>
+                <div class="glass p-3 md:p-6 rounded-xl md:rounded-2xl">
+                    <h3 class="text-xl md:text-3xl font-bold gradient-text">24/7</h3>
+                    <p class="text-gray-400 text-xs md:text-base">IA Activa</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Servicios Ccode_ -->
-    <section id="servicios" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4">
+    <section id="servicios" class="py-16 md:py-20 px-4 md:px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4">
                     Servicios <span class="gradient-text">Ccode_</span>
                 </h2>
-                <p class="text-gray-400 text-xl">Desarrollo de software que impulsa tu negocio</p>
+                <p class="text-gray-400 text-base md:text-xl">Desarrollo de software que impulsa tu negocio</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass p-8 rounded-2xl card-hover hover-glow">
-                    <div class="w-16 h-16 animated-gradient rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-globe text-2xl"></i>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl card-hover hover-glow">
+                    <div class="w-12 h-12 md:w-16 md:h-16 animated-gradient rounded-xl flex items-center justify-center mb-4 md:mb-6">
+                        <i class="fas fa-globe text-xl md:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Websites</h3>
-                    <p class="text-gray-400">Sitios web modernos, rápidos y optimizados para conversión</p>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Websites</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Sitios web modernos, rápidos y optimizados para conversión</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl card-hover hover-glow">
-                    <div class="w-16 h-16 animated-gradient rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-shopping-cart text-2xl"></i>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl card-hover hover-glow">
+                    <div class="w-12 h-12 md:w-16 md:h-16 animated-gradient rounded-xl flex items-center justify-center mb-4 md:mb-6">
+                        <i class="fas fa-shopping-cart text-xl md:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">E-commerce</h3>
-                    <p class="text-gray-400">Tiendas online completas con pagos integrados</p>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">E-commerce</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Tiendas online completas con pagos integrados</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl card-hover hover-glow">
-                    <div class="w-16 h-16 animated-gradient rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-mobile-alt text-2xl"></i>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl card-hover hover-glow">
+                    <div class="w-12 h-12 md:w-16 md:h-16 animated-gradient rounded-xl flex items-center justify-center mb-4 md:mb-6">
+                        <i class="fas fa-mobile-alt text-xl md:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Apps Móviles</h3>
-                    <p class="text-gray-400">Aplicaciones nativas y PWA para iOS y Android</p>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Apps Móviles</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Aplicaciones nativas y PWA para iOS y Android</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl card-hover hover-glow">
-                    <div class="w-16 h-16 animated-gradient rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-cogs text-2xl"></i>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl card-hover hover-glow">
+                    <div class="w-12 h-12 md:w-16 md:h-16 animated-gradient rounded-xl flex items-center justify-center mb-4 md:mb-6">
+                        <i class="fas fa-cogs text-xl md:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Software a Medida</h3>
-                    <p class="text-gray-400">Soluciones personalizadas para tu industria</p>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Software a Medida</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Soluciones personalizadas para tu industria</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- GrowthFlow Section -->
-    <section id="growthflow" class="py-20 relative">
-        <div class="container mx-auto px-6">
-            <div class="glass rounded-3xl p-12 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-96 h-96 animated-gradient opacity-20 blur-3xl"></div>
+    <section id="growthflow" class="py-16 md:py-20 px-4 md:px-6 relative">
+        <div class="container mx-auto">
+            <div class="glass rounded-2xl md:rounded-3xl p-6 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 animated-gradient opacity-20 blur-3xl"></div>
                 
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div>
-                        <div class="inline-block glass px-4 py-2 rounded-full mb-6">
-                            <span class="gradient-text font-semibold">🤖 Powered by AI</span>
+                        <div class="inline-block glass px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-4 md:mb-6">
+                            <span class="gradient-text font-semibold text-sm md:text-base">🤖 Powered by AI</span>
                         </div>
-                        <h2 class="text-5xl font-bold mb-6">
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
                             GrowthFlow<br>
-                            <span class="gradient-text">Marketing Automatizado</span>
+                            <span class="gradient-text text-2xl md:text-4xl">Marketing Automatizado</span>
                         </h2>
-                        <p class="text-gray-400 text-lg mb-8">
+                        <p class="text-gray-400 text-sm md:text-lg mb-6 md:mb-8">
                             Agentes de IA que trabajan 24/7 optimizando tus campañas, generando contenido y maximizando tu ROI
                         </p>
                         
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 animated-gradient rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-chart-line"></i>
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="flex items-center gap-3 md:gap-4">
+                                <div class="w-10 h-10 md:w-12 md:h-12 animated-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-chart-line text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold">Optimización Automática</h4>
-                                    <p class="text-gray-400 text-sm">IA que ajusta campañas en tiempo real</p>
+                                    <h4 class="font-semibold text-sm md:text-base">Optimización Automática</h4>
+                                    <p class="text-gray-400 text-xs md:text-sm">IA que ajusta campañas en tiempo real</p>
                                 </div>
                             </div>
                             
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 animated-gradient rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-pen"></i>
+                            <div class="flex items-center gap-3 md:gap-4">
+                                <div class="w-10 h-10 md:w-12 md:h-12 animated-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-pen text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold">Generación de Contenido</h4>
-                                    <p class="text-gray-400 text-sm">Copy y creatividades personalizadas</p>
+                                    <h4 class="font-semibold text-sm md:text-base">Generación de Contenido</h4>
+                                    <p class="text-gray-400 text-xs md:text-sm">Copy y creatividades personalizadas</p>
                                 </div>
                             </div>
                             
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 animated-gradient rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-users"></i>
+                            <div class="flex items-center gap-3 md:gap-4">
+                                <div class="w-10 h-10 md:w-12 md:h-12 animated-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-users text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold">Segmentación Inteligente</h4>
-                                    <p class="text-gray-400 text-sm">Targeting preciso con machine learning</p>
+                                    <h4 class="font-semibold text-sm md:text-base">Segmentación Inteligente</h4>
+                                    <p class="text-gray-400 text-xs md:text-sm">Targeting preciso con machine learning</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="relative">
-                        <div class="glass p-8 rounded-2xl">
-                            <div class="flex items-center justify-between mb-6">
-                                <span class="text-sm text-gray-400">Performance Dashboard</span>
-                                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                    <div class="relative mt-8 lg:mt-0">
+                        <div class="glass p-4 md:p-8 rounded-xl md:rounded-2xl">
+                            <div class="flex items-center justify-between mb-4 md:mb-6">
+                                <span class="text-xs md:text-sm text-gray-400">Performance Dashboard</span>
+                                <span class="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse"></span>
                             </div>
-                            <div class="space-y-4">
-                                <div class="glass p-4 rounded-xl">
+                            <div class="space-y-3 md:space-y-4">
+                                <div class="glass p-3 md:p-4 rounded-lg md:rounded-xl">
                                     <div class="flex justify-between items-center">
-                                        <span>CTR</span>
-                                        <span class="text-green-400">+47%</span>
+                                        <span class="text-sm md:text-base">CTR</span>
+                                        <span class="text-green-400 text-sm md:text-base">+47%</span>
                                     </div>
-                                    <div class="w-full bg-gray-800 h-2 rounded-full mt-2">
+                                    <div class="w-full bg-gray-800 h-1.5 md:h-2 rounded-full mt-2">
                                         <div class="animated-gradient h-full rounded-full" style="width: 78%"></div>
                                     </div>
                                 </div>
-                                <div class="glass p-4 rounded-xl">
+                                <div class="glass p-3 md:p-4 rounded-lg md:rounded-xl">
                                     <div class="flex justify-between items-center">
-                                        <span>Conversiones</span>
-                                        <span class="text-green-400">+124%</span>
+                                        <span class="text-sm md:text-base">Conversiones</span>
+                                        <span class="text-green-400 text-sm md:text-base">+124%</span>
                                     </div>
-                                    <div class="w-full bg-gray-800 h-2 rounded-full mt-2">
+                                    <div class="w-full bg-gray-800 h-1.5 md:h-2 rounded-full mt-2">
                                         <div class="animated-gradient h-full rounded-full" style="width: 92%"></div>
                                     </div>
                                 </div>
-                                <div class="glass p-4 rounded-xl">
+                                <div class="glass p-3 md:p-4 rounded-lg md:rounded-xl">
                                     <div class="flex justify-between items-center">
-                                        <span>ROI</span>
-                                        <span class="text-green-400">8.4x</span>
+                                        <span class="text-sm md:text-base">ROI</span>
+                                        <span class="text-green-400 text-sm md:text-base">8.4x</span>
                                     </div>
-                                    <div class="w-full bg-gray-800 h-2 rounded-full mt-2">
+                                    <div class="w-full bg-gray-800 h-1.5 md:h-2 rounded-full mt-2">
                                         <div class="animated-gradient h-full rounded-full" style="width: 95%"></div>
                                     </div>
                                 </div>
@@ -277,170 +317,170 @@
     </section>
 
     <!-- Clientes -->
-    <section id="clientes" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4">
+    <section id="clientes" class="py-16 md:py-20 px-4 md:px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4">
                     Marcas que <span class="gradient-text">Confían</span>
                 </h2>
-                <p class="text-gray-400 text-xl">He trabajado con grandes empresas optimizando su presencia digital</p>
+                <p class="text-gray-400 text-sm md:text-xl px-4">He trabajado con grandes empresas optimizando su presencia digital</p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                <div class="glass p-6 rounded-xl flex items-center justify-center hover-glow transition">
-                    <span class="text-2xl font-bold opacity-70">TechCo</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8">
+                <div class="glass p-4 md:p-6 rounded-lg md:rounded-xl flex items-center justify-center hover-glow transition">
+                    <span class="text-base md:text-2xl font-bold opacity-70">TechCo</span>
                 </div>
-                <div class="glass p-6 rounded-xl flex items-center justify-center hover-glow transition">
-                    <span class="text-2xl font-bold opacity-70">StartupX</span>
+                <div class="glass p-4 md:p-6 rounded-lg md:rounded-xl flex items-center justify-center hover-glow transition">
+                    <span class="text-base md:text-2xl font-bold opacity-70">StartupX</span>
                 </div>
-                <div class="glass p-6 rounded-xl flex items-center justify-center hover-glow transition">
-                    <span class="text-2xl font-bold opacity-70">Innova</span>
+                <div class="glass p-4 md:p-6 rounded-lg md:rounded-xl flex items-center justify-center hover-glow transition">
+                    <span class="text-base md:text-2xl font-bold opacity-70">Innova</span>
                 </div>
-                <div class="glass p-6 rounded-xl flex items-center justify-center hover-glow transition">
-                    <span class="text-2xl font-bold opacity-70">Digital+</span>
+                <div class="glass p-4 md:p-6 rounded-lg md:rounded-xl flex items-center justify-center hover-glow transition">
+                    <span class="text-base md:text-2xl font-bold opacity-70">Digital+</span>
                 </div>
-                <div class="glass p-6 rounded-xl flex items-center justify-center hover-glow transition">
-                    <span class="text-2xl font-bold opacity-70">CloudTech</span>
+                <div class="glass p-4 md:p-6 rounded-lg md:rounded-xl flex items-center justify-center hover-glow transition">
+                    <span class="text-base md:text-2xl font-bold opacity-70">CloudTech</span>
                 </div>
-                <div class="glass p-6 rounded-xl flex items-center justify-center hover-glow transition">
-                    <span class="text-2xl font-bold opacity-70">NextGen</span>
+                <div class="glass p-4 md:p-6 rounded-lg md:rounded-xl flex items-center justify-center hover-glow transition">
+                    <span class="text-base md:text-2xl font-bold opacity-70">NextGen</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Precios -->
-    <section id="precios" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4">
+    <section id="precios" class="py-16 md:py-20 px-4 md:px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4">
                     Planes y <span class="gradient-text">Precios</span>
                 </h2>
-                <p class="text-gray-400 text-xl">Soluciones flexibles para cada etapa de tu negocio</p>
+                <p class="text-gray-400 text-sm md:text-xl">Soluciones flexibles para cada etapa de tu negocio</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
                 <!-- Plan Básico -->
-                <div class="glass p-8 rounded-2xl hover-glow transition">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
-                        <p class="text-gray-400 mb-6">Para empezar tu presencia digital</p>
-                        <div class="text-5xl font-bold gradient-text mb-2">$997</div>
-                        <p class="text-gray-400">único pago</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl hover-glow transition">
+                    <div class="text-center mb-6 md:mb-8">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">Starter</h3>
+                        <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">Para empezar tu presencia digital</p>
+                        <div class="text-3xl md:text-5xl font-bold gradient-text mb-1 md:mb-2">$997</div>
+                        <p class="text-gray-400 text-sm md:text-base">único pago</p>
                     </div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Landing Page Profesional
+                    <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8 text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Landing Page Profesional</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Diseño Responsive
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Diseño Responsive</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            SEO Básico
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>SEO Básico</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Hosting 1 año
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Hosting 1 año</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Soporte 30 días
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Soporte 30 días</span>
                         </li>
                     </ul>
                     
-                    <button class="w-full glass py-3 rounded-full hover-glow transition">
+                    <button class="w-full glass py-2.5 md:py-3 rounded-full hover-glow transition text-sm md:text-base">
                         Elegir Plan
                     </button>
                 </div>
                 
                 <!-- Plan Pro -->
-                <div class="glass p-8 rounded-2xl border-2 border-purple-500 relative transform scale-105">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="animated-gradient px-4 py-1 rounded-full text-sm font-semibold">
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl border-2 border-purple-500 relative md:transform md:scale-105">
+                    <div class="absolute -top-3 md:-top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="animated-gradient px-3 py-0.5 md:px-4 md:py-1 rounded-full text-xs md:text-sm font-semibold">
                             MÁS POPULAR
                         </span>
                     </div>
                     
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-2">Professional</h3>
-                        <p class="text-gray-400 mb-6">Solución completa + GrowthFlow</p>
-                        <div class="text-5xl font-bold gradient-text mb-2">$2,497</div>
-                        <p class="text-gray-400">+ $297/mes IA</p>
+                    <div class="text-center mb-6 md:mb-8 pt-2">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">Professional</h3>
+                        <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">Solución completa + GrowthFlow</p>
+                        <div class="text-3xl md:text-5xl font-bold gradient-text mb-1 md:mb-2">$2,497</div>
+                        <p class="text-gray-400 text-sm md:text-base">+ $297/mes IA</p>
                     </div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Website Completo (5-10 páginas)
+                    <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8 text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Website Completo (5-10 páginas)</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <strong>GrowthFlow IA Marketing</strong>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>GrowthFlow IA Marketing</strong></span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Agente IA Personalizado
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Agente IA Personalizado</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Automatización de Campañas
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Automatización de Campañas</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Analytics Dashboard
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Analytics Dashboard</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Soporte Prioritario
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Soporte Prioritario</span>
                         </li>
                     </ul>
                     
-                    <button class="w-full animated-gradient py-3 rounded-full hover:scale-105 transition">
+                    <button class="w-full animated-gradient py-2.5 md:py-3 rounded-full hover:scale-105 transition text-sm md:text-base">
                         Comenzar Ahora
                     </button>
                 </div>
                 
                 <!-- Plan Enterprise -->
-                <div class="glass p-8 rounded-2xl hover-glow transition">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-                        <p class="text-gray-400 mb-6">Soluciones a medida</p>
-                        <div class="text-5xl font-bold gradient-text mb-2">Custom</div>
-                        <p class="text-gray-400">Cotización personalizada</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl hover-glow transition">
+                    <div class="text-center mb-6 md:mb-8">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">Enterprise</h3>
+                        <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">Soluciones a medida</p>
+                        <div class="text-3xl md:text-5xl font-bold gradient-text mb-1 md:mb-2">Custom</div>
+                        <p class="text-gray-400 text-sm md:text-base">Cotización personalizada</p>
                     </div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Desarrollo a Medida
+                    <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8 text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Desarrollo a Medida</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            E-commerce Completo
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>E-commerce Completo</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Apps Móviles
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Apps Móviles</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            Múltiples Agentes IA
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>Múltiples Agentes IA</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            API Personalizada
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>API Personalizada</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            SLA Garantizado
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span>SLA Garantizado</span>
                         </li>
                     </ul>
                     
-                    <button class="w-full glass py-3 rounded-full hover-glow transition">
+                    <button class="w-full glass py-2.5 md:py-3 rounded-full hover-glow transition text-sm md:text-base">
                         Contactar Ventas
                     </button>
                 </div>
@@ -449,72 +489,72 @@
     </section>
 
     <!-- Features Grid -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4">
+    <section class="py-16 md:py-20 px-4 md:px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4">
                     Por qué <span class="gradient-text">Elegirnos</span>
                 </h2>
-                <p class="text-gray-400 text-xl">Tecnología de punta + Creatividad + Resultados</p>
+                <p class="text-gray-400 text-sm md:text-xl">Tecnología de punta + Creatividad + Resultados</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-2xl">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h3 class="text-xl font-bold mb-3">Ultra Rápido</h3>
-                    <p class="text-gray-400">Tiempos de carga &lt;2s. Performance optimizada para SEO y conversión.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">⚡</div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Ultra Rápido</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Tiempos de carga &lt;2s. Performance optimizada para SEO y conversión.</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl">
-                    <div class="text-4xl mb-4">🤖</div>
-                    <h3 class="text-xl font-bold mb-3">IA Integrada</h3>
-                    <p class="text-gray-400">Agentes inteligentes que optimizan tu marketing 24/7.</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">🤖</div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">IA Integrada</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Agentes inteligentes que optimizan tu marketing 24/7.</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl">
-                    <div class="text-4xl mb-4">📊</div>
-                    <h3 class="text-xl font-bold mb-3">Data-Driven</h3>
-                    <p class="text-gray-400">Decisiones basadas en datos reales y análisis predictivo.</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">📊</div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Data-Driven</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Decisiones basadas en datos reales y análisis predictivo.</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl">
-                    <div class="text-4xl mb-4">🎨</div>
-                    <h3 class="text-xl font-bold mb-3">Diseño Premium</h3>
-                    <p class="text-gray-400">Interfaces que enamoran y convierten visitantes en clientes.</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">🎨</div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Diseño Premium</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Interfaces que enamoran y convierten visitantes en clientes.</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl">
-                    <div class="text-4xl mb-4">🔒</div>
-                    <h3 class="text-xl font-bold mb-3">Seguridad Total</h3>
-                    <p class="text-gray-400">SSL, backups automáticos y protección contra ataques.</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">🔒</div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Seguridad Total</h3>
+                    <p class="text-gray-400 text-sm md:text-base">SSL, backups automáticos y protección contra ataques.</p>
                 </div>
                 
-                <div class="glass p-8 rounded-2xl">
-                    <div class="text-4xl mb-4">🚀</div>
-                    <h3 class="text-xl font-bold mb-3">Escalabilidad</h3>
-                    <p class="text-gray-400">Arquitectura que crece con tu negocio sin límites.</p>
+                <div class="glass p-6 md:p-8 rounded-xl md:rounded-2xl">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">🚀</div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Escalabilidad</h3>
+                    <p class="text-gray-400 text-sm md:text-base">Arquitectura que crece con tu negocio sin límites.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Final -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="animated-gradient rounded-3xl p-16 text-center relative overflow-hidden">
+    <section class="py-16 md:py-20 px-4 md:px-6">
+        <div class="container mx-auto">
+            <div class="animated-gradient rounded-2xl md:rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-black opacity-50"></div>
                 <div class="relative z-10">
-                    <h2 class="text-5xl font-bold mb-6">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
                         ¿Listo para el <span class="text-white">Siguiente Nivel</span>?
                     </h2>
-                    <p class="text-xl mb-8 opacity-90">
+                    <p class="text-base md:text-xl mb-6 md:mb-8 opacity-90 px-4">
                         Transforma tu negocio con tecnología que marca la diferencia
                     </p>
-                    <div class="flex flex-col md:flex-row gap-4 justify-center">
-                        <button class="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:scale-105 transition">
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+                        <button class="bg-white text-gray-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover:scale-105 transition text-sm md:text-base">
                             Agendar Llamada <i class="fas fa-calendar ml-2"></i>
                         </button>
-                        <button class="glass px-8 py-4 rounded-full font-semibold hover-glow transition text-white">
+                        <button class="glass px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover-glow transition text-white text-sm md:text-base">
                             Ver Portafolio <i class="fas fa-briefcase ml-2"></i>
                         </button>
                     </div>
@@ -524,22 +564,22 @@
     </section>
 
     <!-- Footer -->
-    <footer class="glass py-12 mt-20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <footer class="glass py-8 md:py-12 mt-12 md:mt-20">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 animated-gradient rounded-lg"></div>
-                        <span class="text-2xl font-bold">Ccode<span class="text-purple-500">_</span></span>
+                    <div class="flex items-center space-x-2 mb-3 md:mb-4">
+                        <div class="w-8 h-8 md:w-10 md:h-10 animated-gradient rounded-lg"></div>
+                        <span class="text-xl md:text-2xl font-bold">Ccode<span class="text-purple-500">_</span></span>
                     </div>
-                    <p class="text-gray-400">
+                    <p class="text-gray-400 text-sm md:text-base">
                         Desarrollo & Marketing Digital con IA
                     </p>
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold mb-4">Servicios</h4>
-                    <ul class="space-y-2 text-gray-400">
+                    <h4 class="font-semibold mb-3 md:mb-4 text-sm md:text-base">Servicios</h4>
+                    <ul class="space-y-1.5 md:space-y-2 text-gray-400 text-sm md:text-base">
                         <li><a href="#" class="hover:text-purple-400 transition">Desarrollo Web</a></li>
                         <li><a href="#" class="hover:text-purple-400 transition">E-commerce</a></li>
                         <li><a href="#" class="hover:text-purple-400 transition">Apps Móviles</a></li>
@@ -548,8 +588,8 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold mb-4">Empresa</h4>
-                    <ul class="space-y-2 text-gray-400">
+                    <h4 class="font-semibold mb-3 md:mb-4 text-sm md:text-base">Empresa</h4>
+                    <ul class="space-y-1.5 md:space-y-2 text-gray-400 text-sm md:text-base">
                         <li><a href="#" class="hover:text-purple-400 transition">Sobre Nosotros</a></li>
                         <li><a href="#" class="hover:text-purple-400 transition">Portafolio</a></li>
                         <li><a href="#" class="hover:text-purple-400 transition">Blog</a></li>
@@ -558,43 +598,68 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold mb-4">Contacto</h4>
-                    <ul class="space-y-2 text-gray-400">
+                    <h4 class="font-semibold mb-3 md:mb-4 text-sm md:text-base">Contacto</h4>
+                    <ul class="space-y-1.5 md:space-y-2 text-gray-400 text-sm md:text-base">
                         <li><i class="fas fa-envelope mr-2"></i> hello@ccode.dev</li>
                         <li><i class="fas fa-phone mr-2"></i> +1 (555) 123-4567</li>
                         <li>
-                            <div class="flex space-x-4 mt-4">
-                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-linkedin text-xl"></i></a>
-                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-github text-xl"></i></a>
-                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-twitter text-xl"></i></a>
-                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+                            <div class="flex space-x-3 md:space-x-4 mt-3 md:mt-4">
+                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-linkedin text-lg md:text-xl"></i></a>
+                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-github text-lg md:text-xl"></i></a>
+                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-twitter text-lg md:text-xl"></i></a>
+                                <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-instagram text-lg md:text-xl"></i></a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+            <div class="border-t border-gray-800 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm">
                 <p>&copy; 2024 Ccode_. Todos los derechos reservados. | Powered by GrowthFlow</p>
             </div>
         </div>
     </footer>
     
     <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
         
         // Animación de aparición en scroll
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
